@@ -1,0 +1,17 @@
+{
+  "$schema": "./node_modules/wrangler/config-schema.json",
+  "name": "incidentlens-api",
+  "main": "src/index.ts",
+  "compatibility_date": "2026-10-07",
+  "observability": {"enabled": true},
+  "ai": {"binding": "AI"},
+  "durable_objects": {
+    "bindings": [{"name":"INCIDENTS","class_name":"IncidentSession"}]
+  },
+  "migrations": [{"tag":"v1","new_sqlite_classes":["IncidentSession"]}],
+  "workflows": [{
+    "name":"incident-investigation",
+    "binding":"INCIDENT_WORKFLOW",
+    "class_name":"IncidentInvestigationWorkflow"
+  }]
+}
